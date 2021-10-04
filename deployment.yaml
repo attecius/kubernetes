@@ -24,13 +24,7 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
-          env:
-          - name: APP_COLOR
-            valueFrom:
-              configMapKeyRef:
-                name: app-cionfig
-                key: APP_COLOR
   selector:
     matchLabels:
       type: backend
-  replicas:
+  replicas: 2
