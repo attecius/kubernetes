@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dev
+  name: nginx
+  labels:
+    name: nginx
+    type: backend
+spec:
+  template:
+    metadata:
+      name: nginx
+      labels:
+        name: nginx
+        type: backend
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          env:
+          - name: APP_COLOR
+            valueFrom:
+              configMapKeyRef:
+                name: app-cionfig
+                key: APP_COLOR
+  selector:
+    matchLabels:
+      type: backend
+  replicas:
