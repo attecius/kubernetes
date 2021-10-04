@@ -27,4 +27,4 @@ spec:
   selector:
     matchLabels:
       type: backend
-  replicas: 2
+  replicas: 3
